@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+body::-webkit-scrollbar {
+    width: 13px;               
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(58, 79, 154, 0.30);    
+    border-radius: 4px;         
+}
+
+
+#header{
+    background: #32325D;
+    display: flex;
+    width: 100%;
+    height: 59px;
+    padding: 15px 79px;
+    align-items: flex-start;
+    gap: 8px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#logo{
+    display: flex;
+    align-items: center;
+}
+
+#text-blog{
+    color: #fff;
+    margin-left: 5px;
+}
+
+#body-info{
+    width: 100%;
+    height: 100%;
+
+}
+
+#title{
+    color: #3A4F9A;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 3.6px;
+    margin-bottom: 26px;
+}
+
+#details{
+    border: 1px solid #3A4F9A;
+    width: 214px;
+}
+
+.section-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 58px;
+}
+
+.card{
+    width: 309px;
+    height: 355px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+
+.card-title{
+    color: #3A4F9A;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 2px;
+    padding-top: 20px;
+    padding: 10px;
+}
+
+.card-text{
+    color: #575757;
+    font-size: 13px;
+    font-family: Inter;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 1.3px;
+    padding-right: 19px;
+    padding-left: 19px;
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+.card-expand{
+    margin-left: 70%;
+    text-decoration: none;
+    color: #32325D;
+    color: #3A4F9A;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 1.3px;
+}
