@@ -24,6 +24,7 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     width: 100%;
     height: 59px;
+    padding: 15px 79px;
     align-items: flex-start;
     gap: 8px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -33,7 +34,6 @@ body::-webkit-scrollbar-thumb {
 #logo{
     display: flex;
     align-items: center;
-    padding: 15px 79px;
 }
 
 #text-blog{
@@ -41,79 +41,61 @@ body::-webkit-scrollbar-thumb {
     margin-left: 5px;
 }
 
-#body-info{
-    width: 100%;
-    height: 100%;
+#section-card{
     display: flex;
-    flex-direction: column;
-    padding-top: 30px;
-}
-
-#title{
-    color: #3A4F9A;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 20px;
-    letter-spacing: 3.6px;
-    margin-bottom: 26px;
-}
-
-#details{
-    border: 1px solid #3A4F9A;
-    width: 214px;
-}
-
-.section-card{
-    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    margin-bottom: 58px;
+    justify-content: center;
+    padding-top: 20px;
 }
 
-.card{
-    width: 309px;
-    height: 355px;
+#return-elipse{
+    position: absolute;
+    padding: 10px;
+    margin-top: 23px;
+    margin-left: 34px;
+    background: #32325D;
+    border-radius: 75px;
+    border: 0.3px solid rgba(255, 255, 255, 0.60);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#card{
+    width: 671px;
+    height: 519px;
     border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
-    cursor: pointer;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
 
 .card-body{
-    padding-top: 10px;
-    padding-right: 19px;
-    padding-left: 19px;
-    padding-bottom: 8px;
+    padding-top: 20px;
+    padding-left: 54px;
+    padding-right: 40px;
+    padding-bottom: 20px;
 }
 
 .card-title{
     color: #3A4F9A;
-    font-size: 16px;
+    font-size: 20px;
     font-family: Inter;
     font-weight: 500;
     line-height: 20px;
     letter-spacing: 2px;
-    padding-bottom: 8px;
+    padding-bottom: 15px;
 }
 
-.card-text{
+#paragrafy-card{
     color: #575757;
     font-size: 13px;
-    font-family: Inter;
     font-weight: 300;
     line-height: 20px;
     letter-spacing: 1.3px;
-    padding-bottom: 8px;
 }
 
-.card-expand{
-    margin-left: 70%;
-    text-decoration: none;
-    color: #32325D;
-    color: #3A4F9A;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 20px;
-    letter-spacing: 1.3px;
-}
+
+
+
+
+
