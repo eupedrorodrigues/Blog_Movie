@@ -30,36 +30,55 @@ const cards: Card[] = [
   },
 ];
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const cardSection = document.getElementById("cardsContainer");
   if (cardSection) {
-    cards.forEach((card) => {
+    cards.forEach((card) => {             
       const cardElement = createCardElement(card);
       cardSection.appendChild(cardElement);
     });
   }
-
+  // Retorna ao para ao id por meio da função geturlparameter.
   const cardId = getUrlParameter("id");
+  //Faz a verificação se o parâmetro definido foi encontrado.
   if (cardId) {
+    // Procura o objeto no array 'cards' cujo ID corresponde ao valor do parâmetro "id".
+    // A função find() retorna o primeiro elemento que satisfaça a condição de busca.
     const selectedCard = cards.find((card) => card.id.toString() === cardId);
+    // Verifica se o cartão foi encontrado com base no ID fornecido.
     if (selectedCard) {
+      // Se o cartão foi encontrado, chama a função displayPresentation com o cartão selecionado como argumento.
       displayPresentation(selectedCard);
     }
   }
   
 });
 
+// Função que obtém o valor de um parâmetro na URL com base no seu nome.
+// A função recebe o nome do parâmetro como argumento e retorna uma string contendo o valor do parâmetro,
+// ou retorna null se o parâmetro não for encontrado na URL.
 function getUrlParameter(name: string): string | null {
+  // Substitui os colchetes "[" e "]" por "\\[" e "\\]" respectivamente na string 'name'.
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  // Cria uma expressão regular para encontrar o parâmetro na URL.
+  // A expressão regular procura por um caractere "?", "&" seguido do nome do parâmetro,
+  // seguido por "=", seguido de qualquer sequência de caracteres que não inclua "&" ou "#".
   const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+  // Executa a expressão regular na propriedade 'search' do objeto 'location',
+  // que contém a parte da URL após o caractere "?".
   const results = regex.exec(location.search);
+   // Verifica se a execução da expressão regular retornou null
+   // Se houver resultados, retorna o valor do parâmetro decodificado.
+    // O valor do parâmetro é armazenado na posição [1] do array 'results'.
+    // Também substitui os sinais de "+" por espaços vazios na string decodificada.
   return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 function displayPresentation(card: Card): void {
   const cardImage = document.getElementById("displayImg") as HTMLImageElement;
   const cardTitle = document.getElementById("displayTitle") as HTMLHeadingElement;
-  const cardBody = document.getElementById("displayParagrafy") as HTMLParagraphElement;
+  const cardBody = document.getElementById("displayParagraph") as HTMLParagraphElement;
   
   console.log(cardImage);
 
@@ -78,6 +97,7 @@ function displayPresentation(card: Card): void {
 
 
 function createCardElement(card: Card): HTMLElement {
+
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
 
@@ -88,7 +108,6 @@ function createCardElement(card: Card): HTMLElement {
   });
 
   const cardImage = document.createElement("img");
-  cardImage.classList.add("card-img-top");
   cardImage.src = card.imageUrl;
   cardImage.width = 309;
   cardLink.appendChild(cardImage);
@@ -188,16 +207,17 @@ const comments: userComment[] = [
 document.addEventListener("DOMContentLoaded", () => {
   const commentsContainer = document.getElementById("comments");
   if (commentsContainer) {
-    
+     // Cria um objeto URLSearchParams com base na string de consulta (query string) da URL atual.
     const urlParams = new URLSearchParams(window.location.search);
+     // Obtém o valor do parâmetro "id" da URL e converte para um número inteiro.
+    // Se o parâmetro "id" não estiver presente, assume o valor 1.
     const currentPage = parseInt(urlParams.get("id") || "1");
-
+    // Comentários por página.
     const commentsPerPage = 3;
-
-    
+    // Calcula o índice de início e o índice de fim dos comentários na página atual.
     const startIndex = (currentPage - 1) * commentsPerPage;
     const endIndex = startIndex + commentsPerPage;
-
+     // Seleciona os comentários correspondentes à página atual com base nos índices calculados.
     const commentsOnPage = comments.slice(startIndex, endIndex);
 
     commentsOnPage.forEach((comment) => {
@@ -211,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function createCommentElement(comment) {
   
   const commentParagraph: HTMLParagraphElement = document.createElement("p");
-  commentParagraph.id = "userComments";
 
   const userIdSpan: HTMLSpanElement = document.createElement("span");
   userIdSpan.textContent = `User_${comment.postId}: `
