@@ -3,26 +3,30 @@ interface Card {
   imageUrl: string;
   title: string;
   body: string;
+  bodyOpen:string;
 }
 
 const cards: Card[] = [
   {
     id: 1,
-    imageUrl: "./img/image_1.svg",
+    imageUrl: "img/image_1.svg",
     title: "Spider-Man: Across the Spider-Verse",
-    body: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence."
+    body: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence...",
+    bodyOpen: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero."
   },
   {
     id: 2,
     imageUrl: "./img/creed.svg",
     title: "Creed",
-    body: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants."
+    body: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants...",
+    bodyOpen: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants to follow his fathers footsteps in boxing. He seeks a mentor who is the former heavyweight boxing champion and former friend of Apollo Creed, the retired Rocky Balboa."
   },
   {
     id: 3,
     imageUrl: "./img/Inception.svg",
     title: "Inception",
-    body: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state."
+    body: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state...",
+    bodyOpen: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state, when the mind is at its most vulnerable. Cobb's rare ability has made him a coveted player in this treacherous new world of corporate espionage, but it has also made him an international fugitive and cost him everything he has ever loved."
   }
 ];
 
@@ -68,7 +72,7 @@ function displayPresentation(card: Card): void {
   }
 
   if (cardBody) {
-    cardBody.textContent = card.body;
+    cardBody.textContent = card.bodyOpen;
   }
 }
 
@@ -115,6 +119,7 @@ function createCardElement(card: Card): HTMLElement {
 }
 
 
+
 interface userComment {
   id: number;
   postId: number;
@@ -126,41 +131,113 @@ const comments: userComment[] = [
   {
     id: 1,
     postId: 1,
-    email: "sandro.pb@example.com",
-    body: "Esse filme foi muito foda, amei!"
+    email: "jolomol731@outlook.com.br",
+    body: "This movie was so badass, I loved it!"
+  },
+  {
+    id: 1,
+    postId: 2,
+    email: "pedro.rodrigues.pb@compasso.com.br",
+    body: "I have a squad called Pedroverso. xD"
+  },
+  {
+    id: 1,
+    postId: 3,
+    email: "emily.smith23@yahoo.com",
+    body: "I just loved the movie!"
+  },
+  {
+    id: 2,
+    postId: 1,
+    email: "johndoe87@gmail.com",
+    body: "Creed packs a punch with its electrifying performances and heart-pounding boxing sequences."
   },
   {
     id: 2,
     postId: 2,
-    email: "pedro.pb@example.com",
-    body: "Eu tenho um squad chamado Pedroverso"
+    email: "david.jones34@hotmail.com",
+    body: "This film is a knockout combination of nostalgia and innovation, breathing new life into the Rocky franchise."
+  },
+  {
+    id: 2,
+    postId: 3,
+    email: "samantha.johnson13@gmail.com",
+    body: "Creed is a powerful and emotional journey that leaves you cheering for its characters long after the final bell."
+  },
+  {
+    id: 3,
+    postId: 1,
+    email: "matthew.rodriguez21@outlook.com",
+    body: "Christopher Nolan's Inception is a cinematic tour de force that blurs the lines between dreams and reality, leaving audiences questioning their own perceptions."
+  },
+  {
+    id: 3,
+    postId: 2,
+    email: "lisa.brown42@yahoo.com",
+    body: "Inception is a mind-bending masterpiece that challenges reality and captivates with its intricate plot and stunning visuals."
   },
   {
     id: 3,
     postId: 3,
-    email: "user3@example.com",
-    body: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    email: "alex.wilson89@gmail.com",
+    body: "With its ingenious storytelling and mesmerizing performances, Inception is a thought-provoking and visually stunning film that keeps you on the edge of your seat."
   },
 ];
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const commentsContainer = document.getElementById("comments");
   if (commentsContainer) {
-    comments.forEach((comment) => {
+    // Get the page number from the URL parameters (assuming the URL is like "index.html?page=1")
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = parseInt(urlParams.get("id") || "1");
+
+    // Number of comments to show per page
+    const commentsPerPage = 3;
+
+    // Calculate the start and end index for comments on the current page
+    const startIndex = (currentPage - 1) * commentsPerPage;
+    const endIndex = startIndex + commentsPerPage;
+
+    const commentsOnPage = comments.slice(startIndex, endIndex);
+
+    commentsOnPage.forEach((comment) => {
       const commentElement = createCommentElement(comment);
       commentsContainer.appendChild(commentElement);
     });
   }
-});
+})
+
 
 function createCommentElement(comment) {
-  const commentParagraph = document.createElement("p");
-  commentParagraph.classList.add("userComments");
+  
+  const commentParagraph: HTMLParagraphElement = document.createElement("p");
+  commentParagraph.id = "userComments";
+
+  const userIdSpan: HTMLSpanElement = document.createElement("span");
+  userIdSpan.textContent = `User_${comment.postId}: `
+  userIdSpan.style.color = "#3A4F9A"; 
+  userIdSpan.style.fontWeight = "600";
+  userIdSpan.style.fontSize = "16px"
+
+  const emailSpan: HTMLSpanElement = document.createElement("span");
+  emailSpan.textContent = `${comment.email}: `;
+  emailSpan.style.color = "#3A4F9A";
+  emailSpan.style.fontWeight = "600";
+  emailSpan.style.fontSize = "16px"
+
+  const userComments: HTMLSpanElement = document.createElement("span");
+  userComments.textContent = `${comment.body}`
+  userComments.style.color = "#575757" 
+  userComments.style.fontSize = "16px"
 
   const commentLine = document.createElement("hr");
   commentLine.classList.add("line");
 
-  commentParagraph.textContent = `User_${comment.id}: ${comment.email}: ${comment.body}`;
-  commentParagraph.appendChild(commentLine)
+  commentParagraph.appendChild(userIdSpan);
+  commentParagraph.appendChild(emailSpan);
+  commentParagraph.appendChild(userComments);
+  commentParagraph.appendChild(commentLine);
+
   return commentParagraph;
 }
