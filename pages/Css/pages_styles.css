@@ -102,7 +102,7 @@ body::-webkit-scrollbar-thumb {
 
 #cardComments{
     width: 671px;
-    height: 280px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;

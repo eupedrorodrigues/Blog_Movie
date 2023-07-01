@@ -1,25 +1,25 @@
 var cards = [
     {
         id: 1,
-        imageUrl: "img/image_1.svg",
+        imageUrl: "../img/image_1.svg",
         title: "Spider-Man: Across the Spider-Verse",
         body: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence...",
         bodyOpen: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero."
     },
     {
         id: 2,
-        imageUrl: "./img/creed.svg",
+        imageUrl: "../img/creed.svg",
         title: "Creed",
         body: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants...",
-        bodyOpen: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants to follow his fathers footsteps in boxing. He seeks a mentor who is the former heavyweight boxing champion and former friend of Apollo Creed, the retired Rocky Balboa."
+        bodyOpen: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants to follow his fathers footsteps in boxing. He seeks a mentor who is the former heavyweight boxing champion and former friend of Apollo Creed, the retired Rocky Balboa.",
     },
     {
         id: 3,
-        imageUrl: "./img/Inception.svg",
+        imageUrl: "../img/Inception.svg",
         title: "Inception",
         body: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state...",
         bodyOpen: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state, when the mind is at its most vulnerable. Cobb's rare ability has made him a coveted player in this treacherous new world of corporate espionage, but it has also made him an international fugitive and cost him everything he has ever loved."
-    }
+    },
 ];
 document.addEventListener("DOMContentLoaded", function () {
     var cardSection = document.getElementById("cardsContainer");
@@ -149,12 +149,9 @@ var comments = [
 document.addEventListener("DOMContentLoaded", function () {
     var commentsContainer = document.getElementById("comments");
     if (commentsContainer) {
-        // Get the page number from the URL parameters (assuming the URL is like "index.html?page=1")
         var urlParams = new URLSearchParams(window.location.search);
         var currentPage = parseInt(urlParams.get("id") || "1");
-        // Number of comments to show per page
         var commentsPerPage = 3;
-        // Calculate the start and end index for comments on the current page
         var startIndex = (currentPage - 1) * commentsPerPage;
         var endIndex = startIndex + commentsPerPage;
         var commentsOnPage = comments.slice(startIndex, endIndex);
