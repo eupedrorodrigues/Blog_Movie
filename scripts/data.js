@@ -29,24 +29,43 @@ document.addEventListener("DOMContentLoaded", function () {
             cardSection.appendChild(cardElement);
         });
     }
+    // Retorna ao para ao id por meio da função geturlparameter.
     var cardId = getUrlParameter("id");
+    //Faz a verificação se o parâmetro definido foi encontrado.
     if (cardId) {
+        // Procura o objeto no array 'cards' cujo ID corresponde ao valor do parâmetro "id".
+        // A função find() retorna o primeiro elemento que satisfaça a condição de busca.
         var selectedCard = cards.find(function (card) { return card.id.toString() === cardId; });
+        // Verifica se o cartão foi encontrado com base no ID fornecido.
         if (selectedCard) {
+            // Se o cartão foi encontrado, chama a função displayPresentation com o cartão selecionado como argumento.
             displayPresentation(selectedCard);
         }
     }
 });
+// Função que obtém o valor de um parâmetro na URL com base no seu nome.
+// A função recebe o nome do parâmetro como argumento e retorna uma string contendo o valor do parâmetro,
+// ou retorna null se o parâmetro não for encontrado na URL.
 function getUrlParameter(name) {
+    // Substitui os colchetes "[" e "]" por "\\[" e "\\]" respectivamente na string 'name'.
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    // Cria uma expressão regular para encontrar o parâmetro na URL.
+    // A expressão regular procura por um caractere "?", "&" seguido do nome do parâmetro,
+    // seguido por "=", seguido de qualquer sequência de caracteres que não inclua "&" ou "#".
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+    // Executa a expressão regular na propriedade 'search' do objeto 'location',
+    // que contém a parte da URL após o caractere "?".
     var results = regex.exec(location.search);
+    // Verifica se a execução da expressão regular retornou null
+    // Se houver resultados, retorna o valor do parâmetro decodificado.
+    // O valor do parâmetro é armazenado na posição [1] do array 'results'.
+    // Também substitui os sinais de "+" por espaços vazios na string decodificada.
     return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 function displayPresentation(card) {
     var cardImage = document.getElementById("displayImg");
     var cardTitle = document.getElementById("displayTitle");
-    var cardBody = document.getElementById("displayParagrafy");
+    var cardBody = document.getElementById("displayParagraph");
     console.log(cardImage);
     if (cardImage) {
         cardImage.src = card.imageUrl;
@@ -67,7 +86,6 @@ function createCardElement(card) {
         window.location.href = "pages/pages.html?id=".concat(card.id, "&img=").concat(card.imageUrl, "&title=").concat(card.title, "&body=").concat(card.body);
     });
     var cardImage = document.createElement("img");
-    cardImage.classList.add("card-img-top");
     cardImage.src = card.imageUrl;
     cardImage.width = 309;
     cardLink.appendChild(cardImage);
@@ -149,11 +167,17 @@ var comments = [
 document.addEventListener("DOMContentLoaded", function () {
     var commentsContainer = document.getElementById("comments");
     if (commentsContainer) {
+        // Cria um objeto URLSearchParams com base na string de consulta (query string) da URL atual.
         var urlParams = new URLSearchParams(window.location.search);
+        // Obtém o valor do parâmetro "id" da URL e converte para um número inteiro.
+        // Se o parâmetro "id" não estiver presente, assume o valor 1.
         var currentPage = parseInt(urlParams.get("id") || "1");
+        // Comentários por página.
         var commentsPerPage = 3;
+        // Calcula o índice de início e o índice de fim dos comentários na página atual.
         var startIndex = (currentPage - 1) * commentsPerPage;
         var endIndex = startIndex + commentsPerPage;
+        // Seleciona os comentários correspondentes à página atual com base nos índices calculados.
         var commentsOnPage = comments.slice(startIndex, endIndex);
         commentsOnPage.forEach(function (comment) {
             var commentElement = createCommentElement(comment);
@@ -163,7 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 function createCommentElement(comment) {
     var commentParagraph = document.createElement("p");
-    commentParagraph.id = "userComments";
     var userIdSpan = document.createElement("span");
     userIdSpan.textContent = "User_".concat(comment.postId, ": ");
     userIdSpan.style.color = "#3A4F9A";
