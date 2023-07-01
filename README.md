@@ -28,6 +28,7 @@ The **Blog Movies** is a project (1st project) related to my internship grant at
  ┃ ┣ 📜data.js
  ┃ ┣ 📜data.ts
  ┣ 📜.gitignore
+ ┣ 📜 README.md
  ┣ 📜 index.html
  ┣ 📜 package-lock.json
  ┣ 📜 package.json
