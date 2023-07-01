@@ -41,12 +41,13 @@ body::-webkit-scrollbar-thumb {
     margin-left: 5px;
 }
 
-#section-card{
+#displaySection{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     padding-top: 20px;
+    margin-bottom: 5%;
 }
 
 #return-elipse{
@@ -60,7 +61,7 @@ body::-webkit-scrollbar-thumb {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-#card{
+#display{
     width: 671px;
     height: 519px;
     border-radius: 8px;
@@ -69,14 +70,14 @@ body::-webkit-scrollbar-thumb {
     overflow: hidden;
 }
 
-.card-body{
+#displayBody{
     padding-top: 20px;
     padding-left: 54px;
     padding-right: 40px;
     padding-bottom: 20px;
 }
 
-.card-title{
+#displayTitle{
     color: #3A4F9A;
     font-size: 20px;
     font-family: Inter;
@@ -86,7 +87,7 @@ body::-webkit-scrollbar-thumb {
     padding-bottom: 15px;
 }
 
-#paragrafy-card{
+#displayParagrafy{
     color: #575757;
     font-size: 13px;
     font-weight: 300;
@@ -101,26 +102,24 @@ body::-webkit-scrollbar-thumb {
 
 #cardComments{
     width: 671px;
-    height: 251px;
+    height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-top: 4%;
 }
 
 #comments{
     display: flex;
     flex-direction: column;
     padding-top: 36px;
-    padding-left: 54px;
-    padding-right: 54px;
-    padding-bottom: 54px;
-
+    padding-left: 36px;
+    padding-right: 36px;
+    padding-bottom: 36px;
 }
 
-#userComments{
+.userComments{
     color: #575757;
     font-size: 14px;
     line-height: 20px;
@@ -132,9 +131,9 @@ body::-webkit-scrollbar-thumb {
     font-weight: 600;
 }
 
-#line{
-    border: 1px solid #575757;
+.line{
+    width: 550px;
     margin-top: 14px;
     margin-bottom: 28px;
-    opacity: 70%;
+    color: #575757;
 }
