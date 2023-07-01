@@ -91,7 +91,6 @@ body::-webkit-scrollbar-thumb {
 .card-title{
     color: #3A4F9A;
     font-size: 16px;
-    font-family: Inter;
     font-weight: 500;
     line-height: 20px;
     letter-spacing: 2px;
@@ -101,7 +100,6 @@ body::-webkit-scrollbar-thumb {
 .card-text{
     color: #575757;
     font-size: 13px;
-    font-family: Inter;
     font-weight: 300;
     line-height: 20px;
     letter-spacing: 1.3px;

@@ -47,7 +47,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: center;
     padding-top: 20px;
-    margin-bottom: 5%;
+    margin-bottom: 3.8%;
 }
 
 #return-elipse{
@@ -102,7 +102,7 @@ body::-webkit-scrollbar-thumb {
 
 #cardComments{
     width: 671px;
-    height: 380px;
+    height: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,13 +126,13 @@ body::-webkit-scrollbar-thumb {
     letter-spacing: 1.6px;
 }
 
-#userId{
+.userId{
     color: #3A4F9A;
     font-weight: 600;
 }
 
 .line{
-    width: 550px;
+    width: 590px;
     margin-top: 14px;
     margin-bottom: 28px;
     color: #575757;
