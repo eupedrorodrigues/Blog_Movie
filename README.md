@@ -17,9 +17,9 @@ The **Blog Movies** is a project (1st project) related to my internship grant at
  ┃ ┃ ┣ 📜Interestelar.svg
  ┃ ┃ ┣ 📜Top-gun.svg
  ┃ ┃ ┣ 📜creed.svg
- ┃ ┃ ┣ 📜image_1.png
- ┃ ┃ ┣ 📜logomarca.png
- ┃ ┃ ┗ 📜luga_silencioso.png
+ ┃ ┃ ┣ 📜image_1.svg
+ ┃ ┃ ┣ 📜logomarca.svg
+ ┃ ┃ ┗ 📜luga_silencioso.svg
  ┣ 📂pages
  ┃ ┣ 📂Css
  ┃ ┃ ┣ pages_style.css
