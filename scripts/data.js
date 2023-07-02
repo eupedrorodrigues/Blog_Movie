@@ -21,6 +21,37 @@ var cards = [
         bodyOpen: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state, when the mind is at its most vulnerable. Cobb's rare ability has made him a coveted player in this treacherous new world of corporate espionage, but it has also made him an international fugitive and cost him everything he has ever loved."
     },
 ];
+function createCardElement(card) {
+    var cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
+    var cardLink = document.createElement("a");
+    cardLink.style.textDecoration = "none";
+    cardLink.addEventListener("click", function () {
+        window.location.href = "pages/pages.html?id=".concat(card.id);
+    });
+    var cardImg = document.createElement("img");
+    cardImg.src = card.imageUrl;
+    cardImg.width = 309;
+    var cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+    var cardTitle = document.createElement("h4");
+    cardTitle.classList.add("card-title");
+    cardTitle.textContent = card.title;
+    cardBody.appendChild(cardTitle);
+    var cardText = document.createElement("p");
+    cardText.classList.add("card-text");
+    cardText.textContent = card.body;
+    cardBody.appendChild(cardText);
+    var expandLink = document.createElement("a");
+    expandLink.classList.add("card-expand");
+    expandLink.href = "";
+    expandLink.textContent = "Expand...";
+    cardLink.appendChild(cardImg);
+    cardBody.appendChild(expandLink);
+    cardLink.appendChild(cardBody);
+    cardDiv.appendChild(cardLink);
+    return cardDiv;
+}
 document.addEventListener("DOMContentLoaded", function () {
     var cardSection = document.getElementById("cardsContainer");
     if (cardSection) {
@@ -63,50 +94,18 @@ function getUrlParameter(name) {
     return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 function displayPresentation(card) {
-    var cardImage = document.getElementById("displayImg");
-    var cardTitle = document.getElementById("displayTitle");
-    var cardBody = document.getElementById("displayParagraph");
-    console.log(cardImage);
-    if (cardImage) {
-        cardImage.src = card.imageUrl;
+    var displayImg = document.getElementById("displayImg");
+    var displayTitle = document.getElementById("displayTitle");
+    var displayBody = document.getElementById("displayParagraph");
+    if (displayImg) {
+        displayImg.src = card.imageUrl;
     }
-    if (cardTitle) {
-        cardTitle.textContent = card.title;
+    if (displayTitle) {
+        displayTitle.textContent = card.title;
     }
-    if (cardBody) {
-        cardBody.textContent = card.bodyOpen;
+    if (displayBody) {
+        displayBody.textContent = card.bodyOpen;
     }
-}
-function createCardElement(card) {
-    var cardDiv = document.createElement("div");
-    cardDiv.classList.add("card");
-    var cardLink = document.createElement("a");
-    cardLink.style.textDecoration = "none";
-    cardLink.addEventListener("click", function () {
-        window.location.href = "pages/pages.html?id=".concat(card.id, "&img=").concat(card.imageUrl, "&title=").concat(card.title, "&body=").concat(card.body);
-    });
-    var cardImage = document.createElement("img");
-    cardImage.src = card.imageUrl;
-    cardImage.width = 309;
-    cardLink.appendChild(cardImage);
-    var cardBody = document.createElement("div");
-    cardBody.classList.add("card-body");
-    var cardTitle = document.createElement("h4");
-    cardTitle.classList.add("card-title");
-    cardTitle.textContent = card.title;
-    cardBody.appendChild(cardTitle);
-    var cardText = document.createElement("p");
-    cardText.classList.add("card-text");
-    cardText.textContent = card.body;
-    cardBody.appendChild(cardText);
-    var cardExpand = document.createElement("a");
-    cardExpand.classList.add("card-expand");
-    cardExpand.href = "";
-    cardExpand.textContent = "Expand...";
-    cardBody.appendChild(cardExpand);
-    cardLink.appendChild(cardBody);
-    cardDiv.appendChild(cardLink);
-    return cardDiv;
 }
 var comments = [
     {
@@ -164,6 +163,36 @@ var comments = [
         body: "With its ingenious storytelling and mesmerizing performances, Inception is a thought-provoking and visually stunning film that keeps you on the edge of your seat."
     },
 ];
+function createCommentElement(comment) {
+    var commentParagraph = document.createElement("p");
+    var userId = document.createElement("span");
+    userId.textContent = "User_".concat(comment.postId, ": ");
+    userId.style.color = "#3A4F9A";
+    userId.style.fontWeight = "600";
+    userId.style.fontSize = "14px";
+    userId.style.lineHeight = "20px";
+    userId.style.letterSpacing = "1.3px";
+    var emailComment = document.createElement("span");
+    emailComment.textContent = "".concat(comment.email, ": ");
+    emailComment.style.color = "#3A4F9A";
+    emailComment.style.fontWeight = "600";
+    emailComment.style.fontSize = "14px";
+    emailComment.style.lineHeight = "20px";
+    emailComment.style.letterSpacing = "1.3px";
+    var userComments = document.createElement("span");
+    userComments.textContent = "".concat(comment.body);
+    userComments.style.color = "#575757";
+    userComments.style.fontSize = "14px";
+    userComments.style.lineHeight = "20px";
+    userComments.style.letterSpacing = "1.3px";
+    var commentLine = document.createElement("hr");
+    commentLine.classList.add("line");
+    commentParagraph.appendChild(userId);
+    commentParagraph.appendChild(emailComment);
+    commentParagraph.appendChild(userComments);
+    commentParagraph.appendChild(commentLine);
+    return commentParagraph;
+}
 document.addEventListener("DOMContentLoaded", function () {
     var commentsContainer = document.getElementById("comments");
     if (commentsContainer) {
@@ -185,27 +214,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-function createCommentElement(comment) {
-    var commentParagraph = document.createElement("p");
-    var userIdSpan = document.createElement("span");
-    userIdSpan.textContent = "User_".concat(comment.postId, ": ");
-    userIdSpan.style.color = "#3A4F9A";
-    userIdSpan.style.fontWeight = "600";
-    userIdSpan.style.fontSize = "16px";
-    var emailSpan = document.createElement("span");
-    emailSpan.textContent = "".concat(comment.email, ": ");
-    emailSpan.style.color = "#3A4F9A";
-    emailSpan.style.fontWeight = "600";
-    emailSpan.style.fontSize = "16px";
-    var userComments = document.createElement("span");
-    userComments.textContent = "".concat(comment.body);
-    userComments.style.color = "#575757";
-    userComments.style.fontSize = "16px";
-    var commentLine = document.createElement("hr");
-    commentLine.classList.add("line");
-    commentParagraph.appendChild(userIdSpan);
-    commentParagraph.appendChild(emailSpan);
-    commentParagraph.appendChild(userComments);
-    commentParagraph.appendChild(commentLine);
-    return commentParagraph;
-}
