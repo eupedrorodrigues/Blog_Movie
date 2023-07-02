@@ -114,8 +114,8 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
     padding-top: 36px;
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 54px;
+    padding-right: 54px;
     padding-bottom: 36px;
 }
 

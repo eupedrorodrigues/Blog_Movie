@@ -1,4 +1,4 @@
-interface Card {
+interface propsCard {
   id: number;
   imageUrl: string;
   title: string;
@@ -6,7 +6,7 @@ interface Card {
   bodyOpen:string;
 }
 
-const cards: Card[] = [
+const cards: propsCard[] = [
   {
     id: 1,
     imageUrl: "../img/image_1.svg",
@@ -29,6 +29,48 @@ const cards: Card[] = [
     bodyOpen: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state, when the mind is at its most vulnerable. Cobb's rare ability has made him a coveted player in this treacherous new world of corporate espionage, but it has also made him an international fugitive and cost him everything he has ever loved."
   },
 ];
+
+
+function createCardElement(card: propsCard): HTMLElement {
+
+  const cardDiv = document.createElement("div");
+  cardDiv.classList.add("card");
+
+  const cardLink = document.createElement("a");
+  cardLink.style.textDecoration = "none";
+  cardLink.addEventListener("click", () => {
+    window.location.href = `pages/pages.html?id=${card.id}`;
+  });
+
+  const cardImg = document.createElement("img");
+  cardImg.src = card.imageUrl;
+  cardImg.width = 309;
+  
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+
+  const cardTitle = document.createElement("h4");
+  cardTitle.classList.add("card-title");
+  cardTitle.textContent = card.title;
+  cardBody.appendChild(cardTitle);
+
+  const cardText = document.createElement("p");
+  cardText.classList.add("card-text");
+  cardText.textContent = card.body;
+  cardBody.appendChild(cardText);
+
+  const expandLink = document.createElement("a");
+  expandLink.classList.add("card-expand");
+  expandLink.href = "";
+  expandLink.textContent = "Expand...";
+  
+  cardLink.appendChild(cardImg);
+  cardBody.appendChild(expandLink);
+  cardLink.appendChild(cardBody);
+  cardDiv.appendChild(cardLink);
+
+  return cardDiv;
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -75,68 +117,23 @@ function getUrlParameter(name: string): string | null {
   return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function displayPresentation(card: Card): void {
-  const cardImage = document.getElementById("displayImg") as HTMLImageElement;
-  const cardTitle = document.getElementById("displayTitle") as HTMLHeadingElement;
-  const cardBody = document.getElementById("displayParagraph") as HTMLParagraphElement;
-  
-  console.log(cardImage);
+function displayPresentation(card: propsCard): void {
+  const displayImg = document.getElementById("displayImg") as HTMLImageElement;
+  const displayTitle = document.getElementById("displayTitle") as HTMLHeadingElement;
+  const displayBody = document.getElementById("displayParagraph") as HTMLParagraphElement;
 
-  if (cardImage) {
-    cardImage.src = card.imageUrl;
+  if (displayImg) {
+    displayImg.src = card.imageUrl;
   }
 
-  if (cardTitle) {
-    cardTitle.textContent = card.title;
+  if (displayTitle) {
+    displayTitle.textContent = card.title;
   }
 
-  if (cardBody) {
-    cardBody.textContent = card.bodyOpen;
+  if (displayBody) {
+    displayBody.textContent = card.bodyOpen;
   }
 }
-
-
-function createCardElement(card: Card): HTMLElement {
-
-  const cardDiv = document.createElement("div");
-  cardDiv.classList.add("card");
-
-  const cardLink = document.createElement("a");
-  cardLink.style.textDecoration = "none";
-  cardLink.addEventListener("click", () => {
-    window.location.href = `pages/pages.html?id=${card.id}&img=${card.imageUrl}&title=${card.title}&body=${card.body}`;
-  });
-
-  const cardImage = document.createElement("img");
-  cardImage.src = card.imageUrl;
-  cardImage.width = 309;
-  cardLink.appendChild(cardImage);
-
-  const cardBody = document.createElement("div");
-  cardBody.classList.add("card-body");
-
-  const cardTitle = document.createElement("h4");
-  cardTitle.classList.add("card-title");
-  cardTitle.textContent = card.title;
-  cardBody.appendChild(cardTitle);
-
-  const cardText = document.createElement("p");
-  cardText.classList.add("card-text");
-  cardText.textContent = card.body;
-  cardBody.appendChild(cardText);
-
-  const cardExpand = document.createElement("a");
-  cardExpand.classList.add("card-expand");
-  cardExpand.href = "";
-  cardExpand.textContent = "Expand...";
-  cardBody.appendChild(cardExpand);
-
-  cardLink.appendChild(cardBody);
-  cardDiv.appendChild(cardLink);
-
-  return cardDiv;
-}
-
 
 
 interface userComment {
@@ -203,6 +200,43 @@ const comments: userComment[] = [
   },
 ];
 
+function createCommentElement(comment) {
+  
+  const commentParagraph: HTMLParagraphElement = document.createElement("p");
+
+  const userId: HTMLSpanElement = document.createElement("span");
+  userId.textContent = `User_${comment.postId}: `
+  userId.style.color = "#3A4F9A"; 
+  userId.style.fontWeight = "600";
+  userId.style.fontSize = "14px";
+  userId.style.lineHeight = "20px";
+  userId.style.letterSpacing = "1.3px";
+
+  const emailComment: HTMLSpanElement = document.createElement("span");
+  emailComment.textContent = `${comment.email}: `;
+  emailComment.style.color = "#3A4F9A";
+  emailComment.style.fontWeight = "600";
+  emailComment.style.fontSize = "14px";
+  emailComment.style.lineHeight = "20px";
+  emailComment.style.letterSpacing = "1.3px";
+
+  const userComments: HTMLSpanElement = document.createElement("span");
+  userComments.textContent = `${comment.body}`;
+  userComments.style.color = "#575757" ;
+  userComments.style.fontSize = "14px";
+  userComments.style.lineHeight = "20px";
+  userComments.style.letterSpacing = "1.3px";
+
+  const commentLine = document.createElement("hr");
+  commentLine.classList.add("line");
+
+  commentParagraph.appendChild(userId);
+  commentParagraph.appendChild(emailComment);
+  commentParagraph.appendChild(userComments);
+  commentParagraph.appendChild(commentLine);
+
+  return commentParagraph;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const commentsContainer = document.getElementById("comments");
@@ -226,36 +260,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 })
-
-
-function createCommentElement(comment) {
-  
-  const commentParagraph: HTMLParagraphElement = document.createElement("p");
-
-  const userIdSpan: HTMLSpanElement = document.createElement("span");
-  userIdSpan.textContent = `User_${comment.postId}: `
-  userIdSpan.style.color = "#3A4F9A"; 
-  userIdSpan.style.fontWeight = "600";
-  userIdSpan.style.fontSize = "16px"
-
-  const emailSpan: HTMLSpanElement = document.createElement("span");
-  emailSpan.textContent = `${comment.email}: `;
-  emailSpan.style.color = "#3A4F9A";
-  emailSpan.style.fontWeight = "600";
-  emailSpan.style.fontSize = "16px"
-
-  const userComments: HTMLSpanElement = document.createElement("span");
-  userComments.textContent = `${comment.body}`
-  userComments.style.color = "#575757" 
-  userComments.style.fontSize = "16px"
-
-  const commentLine = document.createElement("hr");
-  commentLine.classList.add("line");
-
-  commentParagraph.appendChild(userIdSpan);
-  commentParagraph.appendChild(emailSpan);
-  commentParagraph.appendChild(userComments);
-  commentParagraph.appendChild(commentLine);
-
-  return commentParagraph;
-}
