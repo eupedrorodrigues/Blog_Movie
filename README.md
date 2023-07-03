@@ -1,9 +1,9 @@
 # 📽️ Blog Movie
 ## :man_office_worker: Project description
 
-The **Blog Movies** is a project (1st project) related to my internship grant at Compass Uol.
+The **Blog Movies** is a project (1st project) related to my internship grant at Compass Uol. It is the creation of a site with cards with brief descriptions, with the aim of directing users to a more detailed description of the product, as well as providing comments from users who have already tried it.
 
-
+## Project detail
 ![image](https://github.com/eupedrorodrigues/Blog_Movie_Cards/assets/122948103/20fb6e11-299a-424c-8ad0-bbdf5dc2ea05)
 
 
@@ -41,5 +41,7 @@ The **Blog Movies** is a project (1st project) related to my internship grant at
 
 The tools below were used for the development of the project:
 
+* [Html]
+* [Css]
 * [Typescipt]
-* [javascript]
+* [Javascript]
