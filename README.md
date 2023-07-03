@@ -49,4 +49,4 @@ The tools below were used for the development of the project:
 ## How to run the project
 
 1. Clone the repository to your local machine.
-2. Open the ```index.html``` file in a web browser.
+2. Abra a pasta no terminal e digite ```npm start```.
