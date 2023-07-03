@@ -45,3 +45,8 @@ The tools below were used for the development of the project:
 * [Css]
 * [Typescipt]
 * [Javascript]
+
+## How to run the project
+
+1. Clone the repository to your local machine.
+2. Open the ```index.html``` file in a web browser.
