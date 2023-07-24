@@ -1,6 +1,7 @@
 interface propsCard {
   id: number;
   imageUrl: string;
+  imageUrlOpen: string;
   title: string;
   body: string;
   bodyOpen:string;
@@ -9,21 +10,24 @@ interface propsCard {
 const cards: propsCard[] = [
   {
     id: 1,
-    imageUrl: "../img/image_1.svg",
+    imageUrl: "img/image_1.svg",
+    imageUrlOpen: "../img/image_1.svg",
     title: "Spider-Man: Across the Spider-Verse",
     body: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence...",
     bodyOpen: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero."
   },
   {
     id: 2,
-    imageUrl: "../img/creed.svg",
+    imageUrl: "img/creed.svg",
+    imageUrlOpen: "../img/creed.svg",
     title: "Creed",
     body: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants...",
     bodyOpen: "Adonis Johnson is the son of the famous boxing champion Apollo Creed, who died in a boxing match in Rocky IV (1985). Adonis wasn't born until after his father's death and wants to follow his fathers footsteps in boxing. He seeks a mentor who is the former heavyweight boxing champion and former friend of Apollo Creed, the retired Rocky Balboa.",
   },
   {
     id: 3,
-    imageUrl: "../img/Inception.svg",
+    imageUrl: "img/Inception.svg",
+    imageUrlOpen: "../img/Inception.svg",
     title: "Inception",
     body: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state...",
     bodyOpen: "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing valuable secrets from deep within the subconscious during the dream state, when the mind is at its most vulnerable. Cobb's rare ability has made him a coveted player in this treacherous new world of corporate espionage, but it has also made him an international fugitive and cost him everything he has ever loved."
@@ -44,7 +48,7 @@ function createCardElement(card: propsCard): HTMLElement {
 
   const cardImg = document.createElement("img");
   cardImg.src = card.imageUrl;
-  cardImg.width = 309;
+  cardImg.width = 365;
   
   const cardBody = document.createElement("div");
   cardBody.classList.add("card-body");
@@ -117,13 +121,13 @@ function getUrlParameter(name: string): string | null {
   return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function displayPresentation(card: propsCard): void {
+function displayPresentation(card: propsCard) {
   const displayImg = document.getElementById("displayImg") as HTMLImageElement;
   const displayTitle = document.getElementById("displayTitle") as HTMLHeadingElement;
   const displayBody = document.getElementById("displayParagraph") as HTMLParagraphElement;
 
   if (displayImg) {
-    displayImg.src = card.imageUrl;
+    displayImg.src = card.imageUrlOpen;
   }
 
   if (displayTitle) {
@@ -227,7 +231,7 @@ function createCommentElement(comment) {
   userComments.style.lineHeight = "20px";
   userComments.style.letterSpacing = "1.3px";
 
-  const commentLine = document.createElement("hr");
+  const commentLine: HTMLHRElement = document.createElement("hr");
   commentLine.classList.add("line");
 
   commentParagraph.appendChild(userId);
