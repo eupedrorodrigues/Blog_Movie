@@ -49,4 +49,4 @@ The tools below were used for the development of the project:
 ## How to run the project
 
 1. Clone the repository to your local machine.
-2. Open the folder in terminal and type npm start.
+2. Open the folder in terminal and type ```npm start```.
