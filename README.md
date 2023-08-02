@@ -3,8 +3,8 @@
 
 The **Blog Movies** is a project (1st project) related to my internship grant at Compass Uol. It is the creation of a site with cards with brief descriptions, with the aim of directing users to a more detailed description of the product, as well as providing comments from users who have already tried it.
 
-## Project detail
-![image](https://github.com/eupedrorodrigues/Blog_Movie_Cards/assets/122948103/20fb6e11-299a-424c-8ad0-bbdf5dc2ea05)
+![image](https://github.com/eupedrorodrigues/Blog_Movie/assets/122948103/fc98f11d-b422-42e8-aa42-117d75dda032)
+
 
 
 ## System structure
@@ -49,4 +49,5 @@ The tools below were used for the development of the project:
 ## How to run the project
 
 1. Clone the repository to your local machine.
-2. Open the folder in terminal and type ```npm start```.
+2. Open the folder and install the ```npm install``` project dependencies.
+3. Open the folder in terminal and type ```npm start```.
